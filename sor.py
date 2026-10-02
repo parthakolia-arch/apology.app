@@ -34,13 +34,13 @@ st.markdown("""
     .pop-title {
         font-family: 'Great Vibes', cursive;
         font-size: 72px;
-        font-weight: 900; /* Maximum bold thickness */
+        font-weight: 900;
         color: #d63384;
         text-align: center;
-        text-shadow: 3px 3px 8px rgba(0,0,0,0.2); /* Enhanced shadow for depth */
-        animation: popIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-shadow: 3px 3px 8px rgba(0,0,0,0.2);
         margin-bottom: 5px;
-        -webkit-text-stroke: 1px #d63384; /* Makes cursive font look even bolder */
+        -webkit-text-stroke: 1px #d63384;
+        animation: popIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     @keyframes popIn {
@@ -64,18 +64,20 @@ st.markdown("""
         100% { transform: rotate(8deg); }
     }
 
-    /* Styled Apology Paragraph Container with New Font & Color */
+    /* New Styled Apology Paragraph Container with Custom Font & Color */
     .apology-text-container {
         font-family: 'Playfair Display', serif;
         font-style: italic;
-        font-size: 24px;
-        line-height: 1.6;
-        color: #5c0632;
+        font-size: 26px;
+        font-weight: 800;
+        line-height: 1.7;
+        color: #6b1d45; /* New Deep Wine Red Colour */
         text-align: center;
-        padding: 25px;
-        background: rgba(255, 255, 255, 0.4);
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+        box-shadow: 0 8px 24px rgba(214, 51, 132, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.6);
     }
 
     /* Floating Emoji Balloon Effect container */
@@ -120,10 +122,10 @@ else:
     # 1. Giant Cute Animated Teddy Bear
     st.markdown('<div class="giant-teddy">🧸</div>', unsafe_allow_html=True)
 
-    # 2. Top Giant Pop-up Title (Now Extra Bold)
+    # 2. Top Giant Pop-up Title
     st.markdown('<p class="pop-title">I am Sorry, Harshita Ji... 💔</p>', unsafe_allow_html=True)
 
-    # 3. Smart Typewriter Control Block
+    # 3. Smart Typewriter Control Block with Slower Speed
     full_paragraph = (
         "Please forgive me. I deeply regret breaking your trust and breaking the sacred promise I made to you. "
         "I am genuinely ashamed of my actions and how much I have hurt you. From this very moment, "
@@ -137,7 +139,7 @@ else:
         def stream_text():
             for word in full_paragraph.split(" "):
                 yield word + " "
-                time.sleep(0.04)
+                time.sleep(0.12) # Reduced speed (0.04 to 0.12) for calm typewriter pacing
         st.write_stream(stream_text)
         st.session_state.text_typed = True
     else:
@@ -171,3 +173,4 @@ else:
         if st.button("No", key=f"no_{st.session_state.no_count}", use_container_width=True):
             st.session_state.no_count += 1
             st.rerun()
+s
