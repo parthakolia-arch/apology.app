@@ -11,7 +11,7 @@ if "accepted" not in st.session_state:
 if "text_typed" not in st.session_state:
     st.session_state.text_typed = False
 
-# Premium CSS for Custom Giant Teddy, Large Popups, and Custom Fonts
+# Premium CSS for Animations, Fonts, and Layouts
 st.markdown("""
     <style>
     @import url('https://googleapis.com');
@@ -64,20 +64,22 @@ st.markdown("""
         100% { transform: rotate(8deg); }
     }
 
-    /* New Styled Apology Paragraph Container with Custom Font & Color */
+    /* New Luxury Typography & Color Styling for the Paragraph Box */
     .apology-text-container {
-        font-family: 'Playfair Display', serif;
-        font-style: italic;
-        font-size: 26px;
-        font-weight: 800;
-        line-height: 1.7;
-        color: #6b1d45; /* New Deep Wine Red Colour */
+        font-family: 'Cinzel', serif; /* Elegant, premium cinematic styling */
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 1.8;
+        color: #4A154B; /* Striking Deep Royal Violet Plum Color */
         text-align: center;
-        padding: 30px;
-        background: rgba(255, 255, 255, 0.5);
-        border-radius: 20px;
-        box-shadow: 0 8px 24px rgba(214, 51, 132, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.6);
+        padding: 32px;
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(12px);
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(107, 29, 69, 0.15);
+        border: 2px solid rgba(214, 51, 132, 0.2);
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+        letter-spacing: 0.5px;
     }
 
     /* Floating Emoji Balloon Effect container */
@@ -125,7 +127,7 @@ else:
     # 2. Top Giant Pop-up Title
     st.markdown('<p class="pop-title">I am Sorry, Harshita Ji... 💔</p>', unsafe_allow_html=True)
 
-    # 3. Smart Typewriter Control Block with Slower Speed
+    # 3. Smart Typewriter Control Block
     full_paragraph = (
         "Please forgive me. I deeply regret breaking your trust and breaking the sacred promise I made to you. "
         "I am genuinely ashamed of my actions and how much I have hurt you. From this very moment, "
@@ -139,7 +141,7 @@ else:
         def stream_text():
             for word in full_paragraph.split(" "):
                 yield word + " "
-                time.sleep(0.12) # Reduced speed (0.04 to 0.12) for calm typewriter pacing
+                time.sleep(0.12)
         st.write_stream(stream_text)
         st.session_state.text_typed = True
     else:
@@ -173,4 +175,3 @@ else:
         if st.button("No", key=f"no_{st.session_state.no_count}", use_container_width=True):
             st.session_state.no_count += 1
             st.rerun()
-s
